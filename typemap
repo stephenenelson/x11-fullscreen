@@ -1,0 +1,4 @@
+TYPEMAP
+Display *		O_OBJECT
+Window 			T_UV
+
