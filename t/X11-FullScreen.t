@@ -18,6 +18,15 @@ my $window = $display->createWindow();
 $display->sync();
 $display->displayStill($window,'/home/steven/baycon_stills/2003spacesuit.png');
 
-sleep(5);
+our $running = 1;
+$SIG{ALRM} = sub { $running = 0 };
+alarm(5);
+while ($running) {
+	my $event = $display->checkWindowEvent($window)
+	  or next;
+	if ($event->get_type() == 12) {
+	  $display->displayStill($window,'/home/steven/baycon_stills/2003spacesuit.png');
+	}
+}
 
 $display->closeWindow($window);

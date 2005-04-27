@@ -1,4 +1,5 @@
 TYPEMAP
 Display *		O_OBJECT
+XEvent *		O_OBJECT
 Window 			T_UV
 

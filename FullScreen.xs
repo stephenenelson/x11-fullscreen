@@ -178,3 +178,38 @@ doDisplayStill(display,window,a_mrl,screen_width,screen_height)
 	  imlib_free_image();
 	
 
+XEvent *
+checkWindowEvent(display,window,event_mask=( ExposureMask | VisibilityChangeMask ))
+	Display * display
+	Window window
+	long event_mask
+	PREINIT:
+		char *CLASS = "X11::FullScreen::Event";
+	CODE:
+		RETVAL = (XEvent*) safemalloc( sizeof(XEvent) );
+		if ( ! XCheckWindowEvent(
+					display,
+					window,
+					event_mask,
+					RETVAL) ) {
+			XSRETURN_UNDEF;
+		}
+	OUTPUT:
+		RETVAL
+
+
+MODULE = X11::FullScreen	PACKAGE = X11::FullScreen::Event	PREFIX=x11_fullscreen_event_
+
+int
+x11_fullscreen_event_get_type(event)
+	XEvent *event
+	CODE:
+		RETVAL = event->type;
+	OUTPUT:
+		RETVAL
+
+void
+x11_fullscreen_event_DESTROY(event)
+	XEvent *event
+	CODE:
+		safefree(event);
