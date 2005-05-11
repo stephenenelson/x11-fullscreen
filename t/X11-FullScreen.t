@@ -5,18 +5,19 @@
 
 # change 'tests => 1' to 'tests => last_test_to_print';
 
-use Test::More tests => 1;
+use FindBin '$Bin';
+
+use Test::More tests => 2;
 BEGIN { use_ok('X11::FullScreen') };
 
 #########################
 
-# Insert your test code below, the Test::More module is use()ed here so read
-# its man page ( perldoc Test::More ) for help writing this test script.
+our $Image = "$Bin/2003stephencentauri.png";
 
 my $display = X11::FullScreen::Display->new();
 my $window = $display->createWindow();
 $display->sync();
-$display->displayStill($window,'/home/steven/baycon_stills/2003spacesuit.png');
+$display->displayStill($window,$Image);
 
 our $running = 1;
 $SIG{ALRM} = sub { $running = 0 };
@@ -25,8 +26,9 @@ while ($running) {
 	my $event = $display->checkWindowEvent($window)
 	  or next;
 	if ($event->get_type() == 12) {
-	  $display->displayStill($window,'/home/steven/baycon_stills/2003spacesuit.png');
+	  $display->displayStill($window,$Image);
 	}
 }
 
 $display->closeWindow($window);
+ok(1);
