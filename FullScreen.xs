@@ -192,6 +192,7 @@ checkWindowEvent(display,window,event_mask=( ExposureMask | VisibilityChangeMask
 					window,
 					event_mask,
 					RETVAL) ) {
+                        safefree(RETVAL);
 			XSRETURN_UNDEF;
 		}
 	OUTPUT:
