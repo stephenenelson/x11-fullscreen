@@ -1,8 +1,12 @@
 Changes
 FullScreen.xs
+lib/X11/FullScreen.pm
 Makefile.PL
 MANIFEST
+perlobject.map
 ppport.h
 README
+t/2003stephencentauri.png
 t/X11-FullScreen.t
-lib/X11/FullScreen.pm
+typemap
+
