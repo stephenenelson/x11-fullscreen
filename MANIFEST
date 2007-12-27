@@ -1,5 +1,6 @@
-Changes
+ChangeLog
 FullScreen.xs
+inc/Devel/CheckLib.pm
 lib/X11/FullScreen.pm
 Makefile.PL
 MANIFEST
@@ -9,4 +10,3 @@ README
 t/2003stephencentauri.png
 t/X11-FullScreen.t
 typemap
-
