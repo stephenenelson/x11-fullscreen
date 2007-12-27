@@ -4,7 +4,7 @@ use 5.008005;
 use strict;
 use warnings;
 
-our $VERSION = '0.01';
+our $VERSION = '0.03';
 
 require XSLoader;
 XSLoader::load('X11::FullScreen', $VERSION);
@@ -88,24 +88,24 @@ display specifier, such as ':0.0'. Example:
 
 Returns the number of the display's default screen.
 
-=item getWidth( [$screen_number] )
+=item getWidth( $screen_number )
 
 Returns the width in pixels of the screen numbered C<$screen_number>
 of the current display, or of the default screen if not specified.
 
-=item getHeight( [$screen_number] )
+=item getHeight( $screen_number )
 
 Returns the height in pixels of the screen numbered C<$screen_number>
 of the current display, or of the default screen if not specified.
 
-=item getPixelAspect( [$screen_number] )
+=item getPixelAspect( $screen_number )
 
 Returns the pixel aspect of the screen numbered C<$screen_number> of
 the current display, or of the default screen if not specified. The
 pixel aspect is calculated by dividing the screen's vertical
 resolution by its horizontal resolution.
 
-=item createWindow( [$width, $height] )
+=item createWindow( $width, $height )
 
 Creates a new X11 window on the display and returns its ID. If $width
 and $height are not specified, takes up the entire screen.
@@ -114,7 +114,7 @@ and $height are not specified, takes up the entire screen.
 
 Displays a still image on the given display on the given window.
 
-=item checkWindowEvent( $window, [$event_mask] )
+=item checkWindowEvent( $window, $event_mask )
 
 Checks for any new event which has occurred to C<$window>. If
 C<$event_mask> is not specified, defaults to ( ExposureMask |
