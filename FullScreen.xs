@@ -2,8 +2,6 @@
 #include "perl.h"
 #include "XSUB.h"
 
-#include "ppport.h"
-
 
 #include <X11/X.h>
 #include <X11/Xlib.h>
@@ -26,10 +24,10 @@ typedef struct {
 } MWMHints;
 
 
-// Bitmap data for invisible pointer
+/* Bitmap data for invisible pointer */
 static unsigned char bm_no_data[] = { 0,0,0,0, 0,0,0,0 };
 
-// Color for invisible pointer
+/* Color for invisible pointer */
 static XColor black = { 0L, 0, 0, 0, 0, 0 };
 
 
