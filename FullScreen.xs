@@ -176,6 +176,13 @@ doDisplayStill(display,window,a_mrl,screen_width,screen_height)
 	  imlib_free_image();
 	
 
+void
+clearWindow(display,window)
+	Display * display
+	Window window
+	CODE:
+		XClearWindow(display,window);
+
 XEvent *
 checkWindowEvent(display,window,event_mask=( ExposureMask | VisibilityChangeMask ))
 	Display * display

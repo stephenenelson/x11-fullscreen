@@ -110,6 +110,10 @@ resolution by its horizontal resolution.
 Creates a new X11 window on the display and returns its ID. If $width
 and $height are not specified, takes up the entire screen.
 
+=item clearWindow( $window )
+
+Clears window $window.
+
 =item displayStill( $window, $image_file, [ $width, $height ] )
 
 Displays a still image on the given display on the given window.
@@ -125,8 +129,6 @@ you are on your own.
 =back
 
 =head1 BUGS
-
-Undoubtably. This code is still in alpha state.
 
 The checkWindowEvent() method is currently only useful for checking
 for expose events, since the method does not provide useful constants
