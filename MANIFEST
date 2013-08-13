@@ -2,11 +2,13 @@ ChangeLog
 FullScreen.xs
 inc/Devel/CheckLib.pm
 lib/X11/FullScreen.pm
+make_rpm.sh
 Makefile.PL
 MANIFEST
 perlobject.map
 ppport.h
 README
+README.ubuntu
 t/2003stephencentauri.png
 t/X11-FullScreen.t
 typemap
