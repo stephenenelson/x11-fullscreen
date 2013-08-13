@@ -111,6 +111,9 @@ doCreateWindow(display,width,height)
 		Cursor cursor;
 		Atom XA_NO_BORDER;
 		MWMHints mwmhints;
+		XEvent xev;
+		Atom wm_state;
+		Atom fullscreen;
 	CODE:
  		XLockDisplay(display);
  		RETVAL = XCreateSimpleWindow(display, XDefaultRootWindow(display), 0, 0, width, height, 0, 0, 0);
@@ -131,6 +134,21 @@ doCreateWindow(display,width,height)
   		cursor = XCreatePixmapCursor(display, bm_no, bm_no, &black, &black, 0, 0);
   		XDefineCursor(display, RETVAL, cursor);
 		XMapRaised(display, RETVAL);
+		
+		wm_state = XInternAtom(display, "_NET_WM_STATE", False);
+		fullscreen = XInternAtom(display, "_NET_WM_STATE_FULLSCREEN", False);
+		
+		memset(&xev, 0, sizeof(xev));
+		xev.type = ClientMessage;
+		xev.xclient.window = RETVAL;
+		xev.xclient.message_type = wm_state;
+		xev.xclient.format = 32;
+		xev.xclient.data.l[0] = 1;
+		xev.xclient.data.l[1] = fullscreen;
+		xev.xclient.data.l[2] = 0;
+
+		XSendEvent(display, DefaultRootWindow(display), False, SubstructureNotifyMask, &xev);
+		
   		XUnlockDisplay(display);
 	OUTPUT:
 		RETVAL
