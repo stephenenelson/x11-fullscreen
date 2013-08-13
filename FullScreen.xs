@@ -172,25 +172,53 @@ sync(display)
 		XSync(display, False);
 
 void
-doDisplayStill(display,window,a_mrl,screen_width,screen_height)
+doDisplayStill(display,window,a_mrl)
 	Display * display
 	Window window
 	char * a_mrl
-	int screen_width
-	int screen_height
 	INIT:
+	  int screen_width = 0;
+	  int screen_height = 0;
+	  XWindowAttributes windowattr;
 	  Imlib_Image image;
-	CODE:	
+	  int image_width = 0;
+	  int image_height = 0;
+	  int x = 0;
+	  int y = 0;
+	  float width_ratio = 0.0f;
+	  float height_ratio = 0.0f;
+	  int width;
+	  int height;
+	CODE:
+	  if ( XGetWindowAttributes(display, window, &windowattr) == 0) { 
+	  	croak("Failed to get window attributes"); 
+	  } 
+	  screen_width = windowattr.width; 
+	  screen_height = windowattr.height;
 	  imlib_context_set_display(display);
 	  imlib_context_set_visual(DefaultVisual(display,DefaultScreen(display)));
 	  imlib_context_set_colormap(DefaultColormap(display,DefaultScreen(display)));
 	  imlib_context_set_drawable(window);
-	  image = imlib_load_image(a_mrl);
+	  image = imlib_load_image_immediately(a_mrl);
 	  if (image == NULL) {
  	   croak("Unable to load image '%s'", a_mrl);
 	  }
 	  imlib_context_set_image(image);
-	  imlib_render_image_on_drawable_at_size(0,0,screen_width,screen_height);
+	  image_width = imlib_image_get_width();
+	  image_height = imlib_image_get_height();
+	  width_ratio =  (float) screen_width / (float) image_width;
+	  height_ratio =  (float) screen_height / (float) image_height;
+	  if ( width_ratio < height_ratio ) {
+	  	height = round( image_height * width_ratio );
+	  	width = screen_width;
+	  	y = ( screen_height - height ) / 2;
+	  }
+	  else {
+	  	width = round( image_width * height_ratio );
+	  	height = screen_height;
+	  	x = ( screen_width - width ) / 2;
+	  }
+	  imlib_render_image_on_drawable_at_size(x,y,width,height);
 	  imlib_free_image();
 	
 

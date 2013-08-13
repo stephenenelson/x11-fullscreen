@@ -27,11 +27,7 @@ sub createWindow {
 sub displayStill {
   my $self = shift;
   my ($window, $mrl, $width, $height) = @_;
-  defined $width
-    or $width = $self->getWidth();
-  defined $height
-    or $height = $self->getHeight();
-  doDisplayStill($self,$window,$mrl,$width,$height);
+  doDisplayStill($self,$window,$mrl);
 }
 
 
