@@ -133,7 +133,6 @@ doCreateWindow(display,width,height)
 
   		cursor = XCreatePixmapCursor(display, bm_no, bm_no, &black, &black, 0, 0);
   		XDefineCursor(display, RETVAL, cursor);
-		XMapRaised(display, RETVAL);
 		
 		wm_state = XInternAtom(display, "_NET_WM_STATE", False);
 		fullscreen = XInternAtom(display, "_NET_WM_STATE_FULLSCREEN", False);
@@ -149,6 +148,7 @@ doCreateWindow(display,width,height)
 
 		XSendEvent(display, DefaultRootWindow(display), False, SubstructureNotifyMask, &xev);
 		
+		XMapRaised(display, RETVAL);
   		XUnlockDisplay(display);
 	OUTPUT:
 		RETVAL
@@ -190,6 +190,7 @@ doDisplayStill(display,window,a_mrl)
 	  int width;
 	  int height;
 	CODE:
+  	  XLockDisplay(display);
 	  if ( XGetWindowAttributes(display, window, &windowattr) == 0) { 
 	  	croak("Failed to get window attributes"); 
 	  } 
@@ -220,6 +221,8 @@ doDisplayStill(display,window,a_mrl)
 	  }
 	  imlib_render_image_on_drawable_at_size(x,y,width,height);
 	  imlib_free_image();
+ 	  XUnlockDisplay(display);
+
 	
 
 void
