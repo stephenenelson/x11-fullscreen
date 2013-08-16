@@ -57,7 +57,7 @@ x11_fullscreen_new(pkg, display_str)
 	OUTPUT:
 		RETVAL
 
-DisplayPtr
+Display *
 x11_fullscreen_display(self)
 	X11_FullScreen self
 	CODE:
@@ -68,7 +68,7 @@ x11_fullscreen_display(self)
 	OUTPUT:
 		RETVAL
 
-int
+Window
 x11_fullscreen_window(self)
 	X11_FullScreen self
 	CODE:

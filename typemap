@@ -1,7 +1,8 @@
 TYPEMAP
 X11_FullScreen	T_PTROBJ_SPECIAL
 X11_FullScreen_Event T_PTROBJ_SPECIAL
-DisplayPtr	T_PTR
+Display *		T_PTRREF
+Window 			T_UV
 
 INPUT
 T_PTROBJ_SPECIAL

@@ -23,6 +23,7 @@ SKIP: {
   ok(1, "show called");
   $display->sync();
   $display->display_still($Image);
+  ok( defined $display->display, "Display is defined" );
   
   our $running = 1;
   $SIG{ALRM} = sub { $running = 0 };
@@ -35,8 +36,8 @@ SKIP: {
     }
   }
 
-$display->close();
-ok(1);
+  $display->close();
+  ok(1, "Displayed images");
 }
 
 done_testing();
