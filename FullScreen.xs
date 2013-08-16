@@ -40,6 +40,7 @@ typedef struct x11_fullscreen_s* X11_FullScreen;
 
 typedef XEvent* X11_FullScreen_Event;
 
+typedef Display* DisplayPtr;
 
 MODULE = X11::FullScreen	PACKAGE = X11::FullScreen PREFIX=x11_fullscreen_
 
@@ -53,6 +54,36 @@ x11_fullscreen_new(pkg, display_str)
 		Newxz(xefs, 1, struct x11_fullscreen_s);
 		xefs->display_str = newSVsv(display_str);
 		RETVAL = xefs;
+	OUTPUT:
+		RETVAL
+
+DisplayPtr
+x11_fullscreen_display(self)
+	X11_FullScreen self
+	CODE:
+		if (self->display == NULL) {
+			croak("Display not initialized");
+		}
+		RETVAL = self->display;
+	OUTPUT:
+		RETVAL
+
+int
+x11_fullscreen_window(self)
+	X11_FullScreen self
+	CODE:
+		if ( self->window == 0 ) {
+			croak("Window not initialized");
+		}
+		RETVAL = self->window;
+	OUTPUT:
+		RETVAL
+
+int
+x11_fullscreen_screen(self)
+	X11_FullScreen self
+	CODE:
+		RETVAL = XDefaultScreen(self->display);
 	OUTPUT:
 		RETVAL
 		
