@@ -4,32 +4,10 @@ use 5.008005;
 use strict;
 use warnings;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 require XSLoader;
 XSLoader::load('X11::FullScreen', $VERSION);
-
-package X11::FullScreen::Display;
-
-sub createWindow {
-  my $self = shift;
-  my ($width, $height) = @_;
-
-  defined $width
-    or $width = $self->getWidth();
-
-  defined $height
-    or $height = $self->getHeight();
-
-  return doCreateWindow($self,$width,$height);
-}
-
-sub displayStill {
-  my $self = shift;
-  my ($window, $mrl, $width, $height) = @_;
-  doDisplayStill($self,$window,$mrl);
-}
-
 
 1;
 __END__
@@ -41,80 +19,70 @@ X11::FullScreen - Perl extension for creating a simple borderless window with X
 =head1 SYNOPSIS
 
   use X11::FullScreen;
-
-  # Open a handle to the X display 0.0
-  my $display = X11::Fullscreen::Display->new(":0.0");
+  
+  # Create the object
+  my $xfs = X11::FullScreen->new( $display_string );
 
   # Create a full-screen window
-  my $window = $display->createWindow();
+  $xfs->show();
 
   # Sync the X display
-  $display->sync();
+  $xfs->sync();
 
   # Display a still image
-  $display->displayStill($window, "/path/to/my.png");
+  $xfs->display_still($window, "/path/to/my.png");
+  
+  # Close the window
+  $xfs->close();
 
   # Return any new expose events
-  my @events = $display->checkWindowEvent($window);
+  my @events = $xfs->check_window_event($window);
 
 
 =head1 DESCRIPTION
 
-Companion to Video::Xine, this module is used for creating simple
-borderless X windows. In addition, it uses Imlib2 to display still
-images.
+This module is used for creating simple borderless X windows that take up the entire screen. You can use it to display still images, or to show movies (with Video::Xine).
 
-It was primarily developed to provide a no-frills interface to X for
-use with Video::Xine, as part of the Video::PlaybackMachine project.
+It was primarily developed to provide a no-frills interface to X for use with L<Video::Xine>, as part of the L<Video::PlaybackMachine> project.
 
 =head1 METHODS
 
 The primary class for this package is X11::FullScreen::Display.
 
-=over
+=head3 new()
 
-=item new( $display_string )
+   my $xfs = X11::FullScreen->new( $display_string );
 
 Creates a new Display object. C<$display_string> should be a valid
-display specifier, such as ':0.0'. Example:
+X11 display specifier, such as ':0.0'. 
 
-  my $display = X11::FullScreen::Display->new('localhost:0.1');
+=head3 show()
 
-=item getDefaultScreenNumber()
+   $xfs->show();
 
-Returns the number of the display's default screen.
+Map the window and make it full screen.
 
-=item getWidth( $screen_number )
+=head3 get_width()
 
-Returns the width in pixels of the screen numbered C<$screen_number>
-of the current display, or of the default screen if not specified.
+Returns the width in pixels of the window.
 
-=item getHeight( $screen_number )
+=head3 get_height()
 
-Returns the height in pixels of the screen numbered C<$screen_number>
-of the current display, or of the default screen if not specified.
+Returns the height in pixels of the window.
 
-=item getPixelAspect( $screen_number )
+=head3 get_pixel_aspect()
 
-Returns the pixel aspect of the screen numbered C<$screen_number> of
-the current display, or of the default screen if not specified. The
-pixel aspect is calculated by dividing the screen's vertical
-resolution by its horizontal resolution.
+Returns the pixel aspect of the screen.
 
-=item createWindow( $width, $height )
+=head3 clear( $window )
 
-Creates a new X11 window on the display and returns its ID. If $width
-and $height are not specified, takes up the entire screen.
+Clears the window.
 
-=item clearWindow( $window )
-
-Clears window $window.
-
-=item displayStill( $window, $image_file, [ $width, $height ] )
+=head3 display_still( $image_file )
 
 Displays a still image on the given display on the given window.
 
-=item checkWindowEvent( $window, $event_mask )
+=head3 check_window_event( $window, $event_mask )
 
 Checks for any new event which has occurred to C<$window>. If
 C<$event_mask> is not specified, defaults to ( ExposureMask |
@@ -122,25 +90,17 @@ VisibilityChangeMask). This package does not yet have constants for
 the various event masks available; if you wish to use different masks
 you are on your own.
 
-=back
-
-=head1 BUGS
-
-The checkWindowEvent() method is currently only useful for checking
-for expose events, since the method does not provide useful constants
-for passing event masks to it.
-
 =head1 SEE ALSO
 
 L<Video::Xine>, L<Video::PlaybackMachine>, L<Xlib>
 
 =head1 AUTHOR
 
-Stephen Nelson, E<lt>stephen@cpan.org<gt>
+Stephen Nelson, E<lt>stephenenelson@mac.com<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2005 by Stephen Nelson
+Copyright (C) 2013 by Stephen Nelson
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.5 or,

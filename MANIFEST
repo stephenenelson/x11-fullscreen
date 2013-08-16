@@ -1,3 +1,4 @@
+bin/show_image
 ChangeLog
 FullScreen.xs
 inc/Devel/CheckLib.pm
@@ -5,7 +6,6 @@ lib/X11/FullScreen.pm
 make_rpm.sh
 Makefile.PL
 MANIFEST
-perlobject.map
 ppport.h
 README
 README.ubuntu
