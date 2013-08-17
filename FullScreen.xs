@@ -81,6 +81,9 @@ int
 x11_fullscreen_screen(self)
 	X11_FullScreen self
 	CODE:
+		if (self->display == NULL) {
+			croak("Display not initialized");
+		}
 		RETVAL = XDefaultScreen(self->display);
 	OUTPUT:
 		RETVAL
@@ -150,6 +153,9 @@ x11_fullscreen_display_width(self)
 	PREINIT:
 		int screen;
 	CODE:
+		if (self->display == NULL) {
+			croak("Display not initialized");
+		}
 		screen = XDefaultScreen(self->display);
 		RETVAL = DisplayWidth(self->display, screen);
 	OUTPUT:
@@ -162,6 +168,9 @@ x11_fullscreen_display_height(self)
 	PREINIT:
 		int screen;
 	CODE:
+		if (self->display == NULL) {
+			croak("Display not initialized");
+		}
 		screen = XDefaultScreen(self->display);
 		RETVAL = DisplayHeight(self->display, screen);
 	OUTPUT:
@@ -175,6 +184,9 @@ x11_fullscreen_pixel_aspect(self)
 		double res_v;
 		int screen;
 	CODE:
+		if (self->display == NULL) {
+			croak("Display not initialized");
+		}
 		screen = XDefaultScreen(self->display);
 		res_h = (DisplayWidth(self->display,screen) * 1000 / DisplayWidthMM(self->display, screen));
  		res_v = (DisplayHeight(self->display,screen) * 1000 / DisplayHeightMM(self->display, screen));
@@ -186,6 +198,9 @@ void
 x11_fullscreen_close(self)
 	X11_FullScreen self
 	CODE:
+		if (self->display == NULL) {
+			croak("Display not initialized");
+		}
   		XLockDisplay(self->display);
   		XUnmapWindow(self->display, self->window);
   		XDestroyWindow(self->display, self->window);
@@ -197,6 +212,9 @@ void
 x11_fullscreen_sync(self)
 	X11_FullScreen self
 	CODE:
+		if (self->display == NULL) {
+			croak("Display not initialized");
+		}
 		XSync(self->display, False);
 
 void
@@ -217,6 +235,9 @@ x11_fullscreen_display_still(self,a_mrl)
 	  int width;
 	  int height;
 	CODE:
+		if (self->display == NULL) {
+			croak("Display not initialized");
+		}
   	  XLockDisplay(self->display);
 	  if ( XGetWindowAttributes(self->display, self->window, &windowattr) == 0) { 
 	  	croak("Failed to get window attributes"); 
@@ -256,6 +277,9 @@ void
 x11_fullscreen_clear(self)
 	X11_FullScreen self
 	CODE:
+		if (self->display == NULL) {
+			croak("Display not initialized");
+		}
 		XClearWindow(self->display, self->window);
 
 X11_FullScreen_Event
@@ -265,6 +289,9 @@ x11_fullscreen_check_event(self, event_mask=( ExposureMask | VisibilityChangeMas
 	PREINIT:
 		XEvent* event;
 	CODE:
+		if (self->display == NULL) {
+			croak("Display not initialized");
+		}
 		Newx( event, 1, XEvent );
 		if ( ! XCheckWindowEvent(
 					self->display,
