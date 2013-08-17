@@ -40,8 +40,6 @@ typedef struct x11_fullscreen_s* X11_FullScreen;
 
 typedef XEvent* X11_FullScreen_Event;
 
-typedef Display* DisplayPtr;
-
 MODULE = X11::FullScreen	PACKAGE = X11::FullScreen PREFIX=x11_fullscreen_
 
 X11_FullScreen
