@@ -13,12 +13,13 @@ BEGIN { use_ok('X11::FullScreen') };
 our $Image = "$Bin/2003stephencentauri.png";
 
 
-my $display_str = defined $ENV{'DISPLAY'} ? $ENV{'DISPLAY'} : ':0.0';
-my $display = X11::FullScreen->new($display);
+my $display_str = $ENV{'DISPLAY'};
+my $display = X11::FullScreen->new($display // ':0');
 isa_ok($display, 'X11::FullScreen');
 
 SKIP: {
   skip 'No X11 display found', 1 unless $display;
+  
   $display->show();
   ok(1, "show called");
   $display->sync();
