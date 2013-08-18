@@ -47,14 +47,12 @@ It was primarily developed to provide a no-frills interface to X for use with L<
 
 =head1 METHODS
 
-The primary class for this package is X11::FullScreen::Display.
-
 =head3 new()
 
    my $xfs = X11::FullScreen->new( $display_string );
 
 Creates a new Display object. C<$display_string> should be a valid
-X11 display specifier, such as ':0.0'. 
+X11 display specifier, such as ':0.0'. This does not connect to the display. Call C<show()> before doing anything else.
 
 =head3 show()
 
@@ -62,15 +60,35 @@ X11 display specifier, such as ':0.0'.
 
 Map the window and make it full screen.
 
-=head3 get_width()
+=head3 close()
 
-Returns the width in pixels of the window.
+  $xfs->close();
 
-=head3 get_height()
+Close the window.
 
-Returns the height in pixels of the window.
+=head3 window()
 
-=head3 get_pixel_aspect()
+  my $window = $xfs->window();
+
+Returns the Xlib window ID for our window.
+
+=head3 display()
+
+Returns a pointer to the X connection.
+
+=head3 screen()
+
+Returns the number of the default screen on our display.
+
+=head3 display_width()
+
+Returns the width in pixels of the display.
+
+=head3 display_height()
+
+Returns the height in pixels of the displays.
+
+=head3 pixel_aspect()
 
 Returns the pixel aspect of the screen.
 
@@ -82,13 +100,16 @@ Clears the window.
 
 Displays a still image on the given display on the given window.
 
-=head3 check_window_event( $window, $event_mask )
+=head3 sync()
 
-Checks for any new event which has occurred to C<$window>. If
-C<$event_mask> is not specified, defaults to ( ExposureMask |
-VisibilityChangeMask). This package does not yet have constants for
-the various event masks available; if you wish to use different masks
-you are on your own.
+Flushes the output buffer and waits until all all requests have been received and
+processed by the X server.
+
+=head3 check_event( $event_mask )
+
+Checks for any new event which has occurred to the full screen window. If
+C<$event_mask> is not specified, defaults to 
+   ( ExposureMask | VisibilityChangeMask)
 
 =head1 SEE ALSO
 
