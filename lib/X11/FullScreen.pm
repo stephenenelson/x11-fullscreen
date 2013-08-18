@@ -107,9 +107,15 @@ processed by the X server.
 
 =head3 check_event( $event_mask )
 
+   my $event = check_event( $event_mask );
+   my $event_type = $event->get_type();
+
 Checks for any new event which has occurred to the full screen window. If
 C<$event_mask> is not specified, defaults to 
    ( ExposureMask | VisibilityChangeMask)
+
+This returns an X11::FullScreen::Event object. You can access the event type
+by the get_type() method.
 
 =head1 SEE ALSO
 
