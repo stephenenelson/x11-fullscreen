@@ -1,0 +1,19 @@
+---
+abstract: 'Perl extension for creating a simple borderless window with X'
+author:
+  - 'Stephen Nelson, E<lt>stephenenelson@mac.com<gt>'
+build_requires: {}
+configure_requires:
+  Module::Build: 0.40
+dynamic_config: 1
+generated_by: 'Module::Build version 0.4007, CPAN::Meta::Converter version 2.132140'
+license: unknown
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: X11-FullScreen
+provides:
+  X11::FullScreen:
+    file: lib/X11/FullScreen.pm
+    version: 0.04
+version: 0.04
