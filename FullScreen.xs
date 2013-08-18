@@ -42,6 +42,8 @@ typedef XEvent* X11_FullScreen_Event;
 
 MODULE = X11::FullScreen	PACKAGE = X11::FullScreen PREFIX=x11_fullscreen_
 
+PROTOTYPES: DISABLE
+
 X11_FullScreen
 x11_fullscreen_new(pkg, display_str)
 	char *pkg
