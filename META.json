@@ -1,12 +1,12 @@
 {
-   "abstract" : "Perl extension for creating a simple borderless window with X",
+   "abstract" : "Create a full-screen window with Xlib",
    "author" : [
       "Stephen Nelson, E<lt>stephenenelson@mac.com<gt>"
    ],
    "dynamic_config" : 1,
    "generated_by" : "Module::Build version 0.4007, CPAN::Meta::Converter version 2.132140",
    "license" : [
-      "unknown"
+      "perl_5"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
@@ -14,18 +14,28 @@
    },
    "name" : "X11-FullScreen",
    "prereqs" : {
+      "build" : {
+         "requires" : {
+            "ExtUtils::CBuilder" : "0"
+         }
+      },
       "configure" : {
          "requires" : {
-            "Module::Build" : "0.40"
+            "Module::Build" : "0.4"
          }
       }
    },
    "provides" : {
       "X11::FullScreen" : {
          "file" : "lib/X11/FullScreen.pm",
-         "version" : "0.04"
+         "version" : "0.99"
       }
    },
    "release_status" : "stable",
-   "version" : "0.04"
+   "resources" : {
+      "license" : [
+         "http://dev.perl.org/licenses/"
+      ]
+   },
+   "version" : "0.99"
 }

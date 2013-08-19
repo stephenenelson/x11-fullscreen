@@ -1,3 +1,11 @@
+8/18/13 5:31 PM  Stephen Nelson  <stephenenelson@mac.com>
+	- Moved the version to 0.99 to reflect the interface changes.
+	- COMPATIBILITY BREAKING CHANGES!
+	- Rewrote X11::FullScreen as a proper object, instead of a conspiracy of subroutines. All method names changed. Contact me if you're using the original and need a compatibility layer.
+	- Switched to Module::Build
+	- Preserve image aspect ratio when displaying stills that don't take up the full screen
+	- Added clear() method that clears the screen
+
 2007-12-26  Stephen Nelson  <stephenenelson@mac.com>
 
 	- Now getting Imlib2 library info from imlib2-config

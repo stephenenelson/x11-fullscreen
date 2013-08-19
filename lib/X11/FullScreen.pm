@@ -4,7 +4,7 @@ use 5.008005;
 use strict;
 use warnings;
 
-our $VERSION = '0.04';
+our $VERSION = '0.99';
 
 require XSLoader;
 XSLoader::load('X11::FullScreen', $VERSION);
@@ -14,7 +14,7 @@ __END__
 
 =head1 NAME
 
-X11::FullScreen - Perl extension for creating a simple borderless window with X
+X11::FullScreen - Create a full-screen window with Xlib
 
 =head1 SYNOPSIS
 
@@ -26,17 +26,17 @@ X11::FullScreen - Perl extension for creating a simple borderless window with X
   # Create a full-screen window
   $xfs->show();
 
-  # Sync the X display
-  $xfs->sync();
+  # Return any new X event
+  my $events = $xfs->check_event();
 
   # Display a still image
   $xfs->display_still($window, "/path/to/my.png");
   
+  # Sync the X display
+  $xfs->sync();
+
   # Close the window
   $xfs->close();
-
-  # Return any new expose events
-  my @events = $xfs->check_window_event($window);
 
 
 =head1 DESCRIPTION
