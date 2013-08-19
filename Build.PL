@@ -35,6 +35,7 @@ my $build = Module::Build->new(
     build_requires => {
         'ExtUtils::CBuilder' => '0',
     },
+	configure_requires => { 'Module::Build' => 0.40 }
 
 );
 
