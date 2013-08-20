@@ -4,7 +4,7 @@
       "Stephen Nelson, E<lt>stephenenelson@mac.com<gt>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4007, CPAN::Meta::Converter version 2.132140",
+   "generated_by" : "Module::Build version 0.4003, CPAN::Meta::Converter version 2.120921",
    "license" : [
       "perl_5"
    ],
@@ -21,14 +21,22 @@
       },
       "configure" : {
          "requires" : {
-            "Module::Build" : "0.4"
+            "Module::Build" : "0"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "XSLoader" : "0",
+            "perl" : "v5.10.0",
+            "strict" : "0",
+            "warnings" : "0"
          }
       }
    },
    "provides" : {
       "X11::FullScreen" : {
          "file" : "lib/X11/FullScreen.pm",
-         "version" : "0.99"
+         "version" : "0.991"
       }
    },
    "release_status" : "stable",
@@ -37,5 +45,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.99"
+   "version" : "0.991"
 }

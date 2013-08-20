@@ -35,7 +35,21 @@ my $build = Module::Build->new(
     build_requires => {
         'ExtUtils::CBuilder' => '0',
     },
-	configure_requires => { 'Module::Build' => 0.40 }
+	configure_requires => { 
+		'Module::Build' => 0
+	},
+	test_requires => {
+		'Test::More' => 0,
+		'FindBin' => 0,
+		'Test::Kwalitee' => 0,
+		'Test::More' => 0
+	},
+	requires => {
+		'perl' => '5.10.0',
+		'XSLoader' => 0,
+		'strict' => 0,
+		'warnings' => 0
+	}
 
 );
 
