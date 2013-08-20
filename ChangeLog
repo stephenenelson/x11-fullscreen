@@ -1,3 +1,9 @@
+8/19/13 10:16 PM Stephen Nelson  <stephenenelson@mac.com>
+	- Version 0.991
+	- Fixed tests so that they will work properly on non-X machines
+	- Relaxed requirement on Module::Build version
+	- Added dependencies to Build.PL
+
 8/18/13 5:31 PM  Stephen Nelson  <stephenenelson@mac.com>
 	- Moved the version to 0.99 to reflect the interface changes.
 	- COMPATIBILITY BREAKING CHANGES!
