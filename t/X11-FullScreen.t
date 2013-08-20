@@ -3,6 +3,9 @@
 
 #########################
 
+use strict;
+use warnings;
+
 use FindBin '$Bin';
 
 use Test::More;
@@ -14,14 +17,28 @@ our $Image = "$Bin/2003stephencentauri.png";
 
 
 my $display_str = $ENV{'DISPLAY'};
-my $display = X11::FullScreen->new($display // ':0');
+my $display = X11::FullScreen->new($display_str // ':0');
 isa_ok($display, 'X11::FullScreen');
 
+my $continue = 0;
+
 SKIP: {
-  skip 'No X11 display found', 1 unless $display;
-  
-  $display->show();
-  ok(1, "show called");
+  skip 'No DISPLAY variable set in env', 1 unless $display_str;
+
+  eval {
+  	$display->show();
+  	ok(1,  "show called");
+  	$continue = 1;
+  };
+  if ( $@ =~ /^Display not initialized/ ) {
+  	ok(1, "show called (no connection)");
+  }
+
+}
+
+SKIP: {
+  skip 'No connection', 2 unless $continue;
+      
   $display->sync();
   $display->display_still($Image);
   ok( defined $display->display, "Display is defined" );
