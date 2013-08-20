@@ -1,0 +1,5 @@
+Debian_CPANTS.txt
+.tar.gz
+.git
+MANIFEST.SKIP
+pm_to_blib
