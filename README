@@ -8,16 +8,22 @@ INSTALLATION
 
 To install this module type the following:
 
-   perl Makefile.PL
-   make
-   make test
-   make install
+   perl Build.PL
+   ./Build
+   ./Build test
+   ./Build install
 
 DEPENDENCIES
 
 This module requires these other modules and libraries:
 
-  X11
+  X11 (www.x.org)
+  Imlib2 (http://docs.enlightenment.org/api/imlib2/html/)
+  
+Building it requires the following Perl modules, available from CPAN:
+  Devel::CheckLib
+  Module::Build
+  ExtUtils::PkgConfig
 
 COPYRIGHT AND LICENCE
 
