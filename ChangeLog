@@ -1,3 +1,10 @@
+8/20/13 7:25 AM Stephen Nelson  <stephenenelson@mac.com>
+	- Version 0.992
+	- Updated Build.PL to use ExtUtils::PkgConfig
+	- README update
+	- Added github to meta information
+
+
 8/19/13 10:16 PM Stephen Nelson  <stephenenelson@mac.com>
 	- Version 0.991
 	- Fixed tests so that they will work properly on non-X machines
