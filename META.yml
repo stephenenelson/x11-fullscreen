@@ -5,6 +5,8 @@ author:
 build_requires:
   ExtUtils::CBuilder: 0
 configure_requires:
+  Devel::CheckLib: 1.01
+  ExtUtils::PkgConfig: 0
   Module::Build: 0
 dynamic_config: 1
 generated_by: 'Module::Build version 0.4003, CPAN::Meta::Converter version 2.120921'
@@ -16,7 +18,7 @@ name: X11-FullScreen
 provides:
   X11::FullScreen:
     file: lib/X11/FullScreen.pm
-    version: 0.991
+    version: 0.992
 requires:
   XSLoader: 0
   perl: v5.10.0
@@ -24,4 +26,5 @@ requires:
   warnings: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.991
+  repository: https://github.com/stephenenelson/x11-fullscreen
+version: 0.992

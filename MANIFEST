@@ -1,7 +1,6 @@
 bin/show_image
 Build.PL
 ChangeLog
-inc/Devel/CheckLib.pm
 lib/X11/FullScreen.pm
 lib/X11/FullScreen.xs
 make_rpm.sh

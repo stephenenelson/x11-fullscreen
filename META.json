@@ -21,6 +21,8 @@
       },
       "configure" : {
          "requires" : {
+            "Devel::CheckLib" : "1.01",
+            "ExtUtils::PkgConfig" : "0",
             "Module::Build" : "0"
          }
       },
@@ -36,14 +38,17 @@
    "provides" : {
       "X11::FullScreen" : {
          "file" : "lib/X11/FullScreen.pm",
-         "version" : "0.991"
+         "version" : "0.992"
       }
    },
    "release_status" : "stable",
    "resources" : {
       "license" : [
          "http://dev.perl.org/licenses/"
-      ]
+      ],
+      "repository" : {
+         "url" : "https://github.com/stephenenelson/x11-fullscreen"
+      }
    },
-   "version" : "0.991"
+   "version" : "0.992"
 }
