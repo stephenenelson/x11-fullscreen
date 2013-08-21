@@ -25,9 +25,13 @@ Building it requires the following Perl modules, available from CPAN:
   Module::Build
   ExtUtils::PkgConfig
 
+Testing it requires the following Perl modules, also available from CPAN:
+  Test::More
+  Test::Kwalitee
+  
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2005 by Stephen Nelson
+Copyright 2005-2013 by Stephen Nelson
 
 Portions of this code copied from "muxine" (C) 2003 Daniel
 Caujolle-Bert <segfault@club-internet.fr>.
