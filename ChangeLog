@@ -3,7 +3,8 @@
 	- Updated Build.PL to use ExtUtils::PkgConfig
 	- README update
 	- Added github to meta information
-
+	- Stopped bundling Devel::CheckLib
+	- Removed Xext from dependencies list
 
 8/19/13 10:16 PM Stephen Nelson  <stephenenelson@mac.com>
 	- Version 0.991
