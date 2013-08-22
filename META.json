@@ -4,7 +4,7 @@
       "Stephen Nelson, E<lt>stephenenelson@mac.com<gt>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4003, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "Module::Build version 0.4007, CPAN::Meta::Converter version 2.132140",
    "license" : [
       "perl_5"
    ],
@@ -50,5 +50,9 @@
          "url" : "https://github.com/stephenenelson/x11-fullscreen"
       }
    },
-   "version" : "0.992"
+   "version" : "0.992",
+   "x_test_requires" : {
+      "Test::Kwalitee" : "0",
+      "Test::More" : "0"
+   }
 }

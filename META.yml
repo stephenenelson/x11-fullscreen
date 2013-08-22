@@ -9,7 +9,7 @@ configure_requires:
   ExtUtils::PkgConfig: 0
   Module::Build: 0
 dynamic_config: 1
-generated_by: 'Module::Build version 0.4003, CPAN::Meta::Converter version 2.120921'
+generated_by: 'Module::Build version 0.4007, CPAN::Meta::Converter version 2.132140'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -28,3 +28,6 @@ resources:
   license: http://dev.perl.org/licenses/
   repository: https://github.com/stephenenelson/x11-fullscreen
 version: 0.992
+x_test_requires:
+  Test::Kwalitee: 0
+  Test::More: 0

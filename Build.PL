@@ -1,21 +1,11 @@
 use strict;
-use lib qw(inc);
-use Devel::CheckLib;
-use ExtUtils::PkgConfig;
-use Module::Build;
+use FindBin '$Bin';
+use lib "$Bin/inc";
 
-check_lib_or_exit(
-    # fill in what you prompted the user for here
-    lib => [qw(Imlib2 X11)]
-);
+use PkgConfBuild;
 
-my %x11_info = ExtUtils::PkgConfig->find('x11');
-my %imlib2_info = ExtUtils::PkgConfig->find('imlib2');
-
-my $build = Module::Build->new(
+my $build = PkgConfBuild->new(
     module_name          => 'X11::FullScreen',
-    extra_linker_flags   => $imlib2_info{'libs'} . ' ' . $x11_info{'libs'},
-    extra_compiler_flags => '-I. ' . $imlib2_info{'cflags'} . ' ' . $x11_info{'cflags'},
     license              => 'perl',
     build_requires => {
         'ExtUtils::CBuilder' => '0',
