@@ -1,9 +1,10 @@
-package PkgConfBuild;
-
-use base 'Module::Build';
+package
+PkgConfBuild;
 
 use strict;
 use warnings;
+
+use base 'Module::Build';
 
 use Devel::CheckLib;
 use ExtUtils::PkgConfig;
