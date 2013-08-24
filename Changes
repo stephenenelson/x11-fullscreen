@@ -1,6 +1,7 @@
 0.994 2013-08-23
  - Reformatted Changes file
  - Moved CheckLib and PkgConfig to ConfigRequires
+ - Switched to OurPkgVersion
 
 0.993 2013-08-22
  - Moved to Dist::Zilla

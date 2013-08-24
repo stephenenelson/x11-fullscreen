@@ -5,6 +5,8 @@ use warnings;
 use FindBin '$Bin';
 use lib "$Bin/../lib";
 
+# VERSION
+
 use X11::FullScreen;
 
 @ARGV == 1 or die "Usage: $0 IMAGE_FILENAME\n";

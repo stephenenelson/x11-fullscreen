@@ -4,7 +4,7 @@ use 5.008005;
 use strict;
 use warnings;
 
-our $VERSION = '0.993';
+# VERSION
 
 require XSLoader;
 XSLoader::load('X11::FullScreen', $VERSION);
